@@ -51,8 +51,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch',function(event){
   console.log('Hijack requests');
   event.respondWith(
-    caches.match(event.request).then(function(){
-        console.log(response)
+    caches.match(event.request).then(function(response){
       if(response) return response;
       return fetch(event.request).then(function(response) {
           if (response.status == 404) {
